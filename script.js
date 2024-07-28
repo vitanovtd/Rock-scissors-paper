@@ -1,30 +1,47 @@
-function playGame() {
-  let humanScore = 0;
-  let computerScore = 0;
+const rockButton = document.getElementById("rock");
+const scissorsButton = document.getElementById("scissors");
+const paperButton = document.getElementById("paper");
 
-  for (let i = 0; i < 5; i++) {
-    let humanSelection = getHumanChoice();
-    let computerChoice = getComputerChoice();
+rockButton.addEventListener("click", () => playRound("rock"));
+scissorsButton.addEventListener("click", () => playRound("scissors"));
+paperButton.addEventListener("click", () => playRound("paper"));
 
-    let result = playRound(humanSelection, computerChoice);
+const currentResult = document.getElementById("current-result");
+const currentScore = document.getElementById("current-score");
+const finalScore = document.getElementById("final-score");
 
-    if (result === "human") {
-      humanScore++;
-    } else if (result === "computer") {
-      computerScore++;
-    }
+let humanScore = 0;
+let computerScore = 0;
+let playedRounds = 0;
+
+function playRound(humanChoice) {
+  if (playedRounds === 5) {
+    return;
   }
 
-  console.log(
-    `Final Scores is Human: ${humanScore} - Computer: ${computerScore}`
-  );
+  const computerChoice = getComputerChoice();
 
-  if (humanScore > computerScore) {
-    console.log("You are the winner!");
-  } else if (computerScore > humanScore) {
-    console.log("The computer wins!");
-  } else {
-    console.log("Its a draw!");
+  const result = determineWinner(humanChoice, computerChoice);
+
+  if (result === "human") {
+    humanScore++;
+  } else if (result === "computer") {
+    computerScore++;
+  }
+
+  currentResult.textContent = `You chose ${humanChoice}, computer chose ${computerChoice}`;
+  currentScore.textContent = `Current score is: User: ${humanScore}, Computer: ${computerScore}`;
+
+  playedRounds++;
+
+  if (playedRounds === 5) {
+    if (humanScore > computerScore) {
+      finalScore.textContent = "You are the winner !";
+    } else if (computerScore > humanScore) {
+      finalScore.textContent = "The computer wins";
+    } else {
+      finalScore.textContent = "It's a draw!";
+    }
   }
 }
 
@@ -35,47 +52,27 @@ function getComputerChoice() {
   return choices[randomIndex];
 }
 
-function getHumanChoice() {
-  const choices = ["rock", "paper", "scissors"];
-
-  let userInput = prompt(
-    "Please enter your choice (rock, paper, or scissors):"
-  ).toLowerCase();
-
-  while (!choices.includes(userInput)) {
-    userInput = prompt(
-      "Invalid choice. Please enter rock, scissors or paper"
-    ).toLowerCase();
-  }
-
-  return userInput;
-}
-
-function playRound(humanChoice, computerChoice) {
-  let human = humanChoice.toLowerCase();
-
-  if (human === computerChoice) {
+function determineWinner(humanChoice, computerChoice) {
+  if (humanChoice === computerChoice) {
     console.log(
-      `Its a draw! You choose ${human} versus ${computerChoice} computer choice`
+      `Its a draw! You choose ${humanChoice} versus ${computerChoice}`
     );
     return "draw";
   }
 
   if (
-    (human === "rock" && computerChoice === "scissors") ||
-    (human === "scissors" && computerChoice === "paper") ||
-    (human === "paper" && computerChoice === "rock")
+    (humanChoice === "rock" && computerChoice === "scissors") ||
+    (humanChoice === "scissors" && computerChoice === "paper") ||
+    (humanChoice === "paper" && computerChoice === "rock")
   ) {
-    console.log(`You won! ${human} beats ${computerChoice}`);
+    console.log(`You won! ${humanChoice} beats ${computerChoice}`);
     return "human";
   } else if (
-    (human === "scissors" && computerChoice === "rock") ||
-    (human === "paper" && computerChoice === "scissors") ||
-    (human === "rock" && computerChoice === "paper")
+    (humanChoice === "scissors" && computerChoice === "rock") ||
+    (humanChoice === "paper" && computerChoice === "scissors") ||
+    (humanChoice === "rock" && computerChoice === "paper")
   ) {
-    console.log(`You lost! ${computerChoice} beats ${human}`);
+    console.log(`You lost! ${computerChoice} beats ${humanChoice}`);
     return "computer";
   }
 }
-
-playGame();
