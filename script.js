@@ -40,7 +40,7 @@ function playRound(humanChoice) {
     } else if (computerScore > humanScore) {
       finalScore.textContent = "The computer wins";
     } else {
-      finalScore.textContent = "";
+      finalScore.textContent = "It's a draw!";
     }
   }
 }
@@ -76,5 +76,3 @@ function determineWinner(humanChoice, computerChoice) {
     return "computer";
   }
 }
-
-// playGame();
