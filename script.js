@@ -8,7 +8,7 @@ paperButton.addEventListener("click", () => playRound("paper"));
 
 const currentResult = document.getElementById("current-result");
 const currentScore = document.getElementById("current-score");
-const finalResult = document.getElementById("final-result");
+const finalScore = document.getElementById("final-score");
 
 let humanScore = 0;
 let computerScore = 0;
@@ -24,29 +24,15 @@ function playRound(humanChoice) {
     computerScore++;
   }
 
-  // for (let i = 0; i < 5; i++) {
-  //   let humanSelection = getHumanChoice();
-  //   let computerChoice = getComputerChoice();
-
-  //   let result = playRound(humanSelection, computerChoice);
-
-  //   if (result === "human") {
-  //     humanScore++;
-  //   } else if (result === "computer") {
-  //     computerScore++;
-  //   }
-  // }
-
-  // console.log(
-  //   `Final Scores is Human: ${humanScore} - Computer: ${computerScore}`
-  // );
+  currentResult.textContent = `You chose ${humanChoice}, computer chose ${computerChoice}`;
+  currentScore.textContent = `Current score is: User: ${humanScore}, Computer: ${computerScore}`;
 
   if (humanScore > computerScore) {
-    console.log("You are the winner!");
+    finalScore.textContent = "You are the winner !";
   } else if (computerScore > humanScore) {
-    console.log("The computer wins!");
+    finalScore.textContent = "The computer wins";
   } else {
-    console.log("Its a draw!");
+    finalScore.textContent = "It's a draw!";
   }
 }
 
