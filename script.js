@@ -6,6 +6,10 @@ rockButton.addEventListener("click", () => playRound("rock"));
 scissorsButton.addEventListener("click", () => playRound("scissors"));
 paperButton.addEventListener("click", () => playRound("paper"));
 
+const currentResult = document.getElementById("current-result");
+const currentScore = document.getElementById("current-score");
+const finalResult = document.getElementById("final-result");
+
 let humanScore = 0;
 let computerScore = 0;
 
