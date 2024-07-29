@@ -9,16 +9,36 @@ body {
 }
 
 .hero-section {
-  background-color: #e23444;
-  padding: 60px 120px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  background-color: #34d1e2;
+  padding: 40px 80px;
   text-align: center;
 }
 
 .hero-title {
   color: #181313;
   font-style: italic;
+  padding: 5px 10px;
+}
+
+.hero-image-container {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.hero-img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
 }
 
 .buttons-section {
   display: flex;
+  justify-content: space-around;
 }
