@@ -37,10 +37,16 @@ function playRound(humanChoice) {
   if (playedRounds === 5) {
     if (humanScore > computerScore) {
       finalScore.textContent = "You are the winner !";
+      finalScore.classList.add("win");
+      finalScore.classList.remove("draw", "lost");
     } else if (computerScore > humanScore) {
       finalScore.textContent = "The computer wins";
+      finalScore.classList.add("lost");
+      finalScore.classList.remove("draw", "win");
     } else {
       finalScore.textContent = "It's a draw!";
+      finalScore.classList.add("draw");
+      finalScore.classList.remove("lost", "win");
     }
   }
 }

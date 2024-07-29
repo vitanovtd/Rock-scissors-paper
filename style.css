@@ -59,3 +59,24 @@ button {
   text-align: center;
   margin-top: 20px;
 }
+
+.result-section {
+  text-align: center;
+  font-size: 20px;
+}
+
+.final-score {
+  color: rgb(149, 181, 18);
+}
+
+.win {
+  color: #2de92d;
+}
+
+.draw {
+  color: #0caabc;
+}
+
+.lost {
+  color: #bc0c0c;
+}
