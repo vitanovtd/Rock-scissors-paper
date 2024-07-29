@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.hero-section {
+  background-color: #e23444;
+  padding: 60px 120px;
+  text-align: center;
+}
+
+.hero-title {
+  color: #181313;
+  font-style: italic;
+}
+
+.buttons-section {
+  display: flex;
+}
